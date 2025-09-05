@@ -26,7 +26,7 @@
         </div>
     </div>
     
-    <table id="pasien-table" class="table table-striped">
+    <table id="pasien-table" class="table table-striped" data-table="pasien">
         <thead>
             <tr>
                 <th>Nama Pasien</th>

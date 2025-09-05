@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use App\Models\Rumahsakit;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PasienController extends Controller
 {
@@ -47,6 +48,7 @@ class PasienController extends Controller
         ]);
 
         Pasien::create($validateData);
+        Alert::success('Berhasil', "Pasien $request->nama berhasil ditambahkan");
         return redirect(route('pasiens.index'));
     }
 
@@ -83,6 +85,7 @@ class PasienController extends Controller
         ]);
 
         $pasien->update($validateData);
+        Alert::success('Berhasil', "Pasien $request->nama berhasil diubah");
         return redirect(route('pasiens.index'));
     }
 
@@ -91,7 +94,8 @@ class PasienController extends Controller
      */
     public function destroy(Pasien $pasien)
     {
-
+        redirect('pasiens.deleteData');
+        Alert::success('Berhasil', "Pasien telah dihapus");
     }
 
     public function deleteData($id)

@@ -15,7 +15,7 @@
             <a href="{{ route('pasiens.index') }}" class="menu-data">Data Pasien</a>
         </div>
     </div>
-    <table id="rumahsakit-table" class="table table-striped">
+    <table id="rumahsakit-table" class="table table-striped" data-table="rumahsakit">
         <tr>
             <th>Nama Rumah Sakit</th>
             <th>Alamat</th>

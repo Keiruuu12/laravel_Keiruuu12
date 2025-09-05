@@ -11,30 +11,20 @@
         <div class="menu">
             <a href="{{ route('pasiens.create') }}" class="menu-tambah">Tambah Pasien</a>
         </div>
+
         <div class="filter-container">
-            <select name="filter" id="filter" class="filter-select">
-                <option value="All">All</option>
+            <select name="rumahsakit" id="rumahsakit" class="filter-select">
+                <option value="">All</option>
                 @foreach ($rumahsakits as $rumahsakit)
                 <option value="{{ $rumahsakit->id }}" class="option-filter">{{ $rumahsakit->nama }}</option>
                 @endforeach
             </select>
         </div>
+    
         <div class="menu">
             <a href="{{ route('rumahsakits.index') }}" class="menu-data">Data Rumah Sakit</a>
         </div>
     </div>
-
-    <table class="table table-bordered" id="products-table">
-        <thead>
-            <tr>
-                <th>Nama Pasien</th>
-                <th>Rumah Sakit</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data diisi lewat AJAX -->
-        </tbody>
-    </table>
     
     <table id="pasien-table" class="table table-striped">
         <thead>
@@ -83,6 +73,22 @@ $("#pasien-table").on("click", ".deleteData" , function(){
             console.log(err.responeText);
         }
     })
+});
+
+$('#rumahsakit').on('change', function () {
+    const selectedId = $(this).val();
+
+    $.ajax({
+        url: "{{ route('pasiens.filter') }}",
+        method: "GET",
+        data: { rumahsakit_id: selectedId },
+        success: function (res) {
+            $('#pasien-table tbody').html(res.html);
+        },
+        error: function (xhr) {
+            alert('Gagal memuat data pasien!');
+        }
+    });
 });
 </script>
 @endsection

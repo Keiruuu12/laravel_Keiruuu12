@@ -1,29 +1,31 @@
 @extends('layouts.app')
 @section('content')
-    <div>
+<div class="show-container">
+    <div class="header">
         <h1>Biodata Pasien</h1>
     </div>
     <hr>
 
-    <div>
-        <label for="">Nama: </label>
-        <p>{{ $pasien->nama }}</p>
+    <div class="info">
+        <label for="" class="info-label">Nama: </label>
+        <p class="info-patient">{{ $pasien->nama }}</p>
     </div>
 
-    <div>
-        <label for="">Alamat: </label>
-        <p>{{ $pasien->alamat }}</p>
+    <div class="info">
+        <label for="" class="info-label">Alamat: </label>
+        <p class="info-patient">{{ $pasien->alamat }}</p>
     </div>
 
-    <div>
-        <label for="">Nomor Telepon: </label>
-        <p>{{ $pasien->telepon }}</p>
+    <div class="info">
+        <label for="" class="info-label">Nomor Telepon: </label>
+        <p class="info-patient">{{ $pasien->telepon }}</p>
     </div>
     
-    <div>
-        <label for="">Rumah Sakit: </label>
-        <p>{{ $pasien->rumahsakit->nama }}</p>
+    <div class="info">
+        <label for="" class="info-label">Rumah Sakit: </label>
+        <p class="info-patient">{{ $pasien->rumahsakit->nama }}</p>
     </div>
 
-    <a href="{{ route('pasiens.index') }}">Kembali</a>
+    <a href="{{ route('pasiens.index') }}" class="btn-back">Kembali</a>
+</div>
 @endsection

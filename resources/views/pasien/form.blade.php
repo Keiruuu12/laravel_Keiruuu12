@@ -1,11 +1,12 @@
 @csrf
-<div>
-    <label for="nama">Nama Pasien:</label>
-    <div>
+<div class="input-form-container">
+    <div class="form">
+        <label for="nama" class="label">Nama Pasien:</label>
         <input type="text" name="nama" value="{{ old('nama') ?? $pasien->nama ?? '' }}" autofocus placeholder="Masukkan Nama Pasien" class="
         @error('nama')
             is-invalid
         @enderror
+        input-form
         ">
         @error('nama')
             <span>
@@ -15,13 +16,14 @@
     </div>
 </div>
 
-<div>
-    <label for="alamat">Alamat Pasien:</label>
-    <div>
+<div class="input-form-container">
+    <div class="form">
+        <label for="alamat" class="label">Alamat Pasien:</label>
         <input type="text" name="alamat" value="{{ old('alamat') ?? $pasien->alamat ?? '' }}" autofocus placeholder="Masukkan Alamat Pasien" class="
         @error('alamat')
             is-invalid
         @enderror
+        input-form
         ">
         @error('alamat')
             <span>
@@ -31,13 +33,14 @@
     </div>
 </div>
 
-<div>
-    <label for="telepon">Nomor telepon Pasien:</label>
-    <div>
+<div class="input-form-container">
+    <div class="form">
+        <label for="telepon" class="label">Nomor telepon Pasien:</label>
         <input type="text" name="telepon" value="{{ old('telepon') ?? $pasien->telepon ?? '' }}" autofocus placeholder="Masukkan Nomor Telepon Pasien" class="
         @error('telepon')
             is-invalid
         @enderror
+        input-form
         ">
         @error('telepon')
             <span>
@@ -47,13 +50,14 @@
     </div>
 </div>
 
-<div>
-    <label for="rumahsakit_id">Rumah Sakit:</label>
-    <div>
+<div class="input-form-container">
+    <div class="form">
+        <label for="rumahsakit_id" class="label">Rumah Sakit:</label>
         <select name="rumahsakit_id" id="rumahsakit_id" class="
         @error('rumahsakit_id')
             is-invalid
         @enderror
+        input-form
         ">
         @foreach ($rumahsakits as $rumahsakit)
             @if ($rumahsakit->id === (old('rumahsakit_id') ?? $rumahsakit->nama ?? ''))
@@ -69,6 +73,6 @@
     </div>
 </div>
 
-<div>
+<div class="submit-form-container">
     <button type="submit" class="btn-submit">{{ $button }}</button>
 </div>

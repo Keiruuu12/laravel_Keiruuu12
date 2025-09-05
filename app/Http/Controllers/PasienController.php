@@ -108,6 +108,21 @@ class PasienController extends Controller
             $query->where('rumahsakit_id', $request->rumahsakit_id);
         }
 
-        return response()->json($query->get());
+        $pasiens = $query->get();
+
+        $html = '';
+        foreach ($pasiens as $pasien) {
+        $html .= '<tr>
+            <td><a href="' . route('pasiens.show', $pasien->id) . '" class="nama-table">' . $pasien->nama . '</a></td>
+            <td>' . $pasien->alamat . '</td>
+            <td>' . $pasien->telepon . '</td>
+            <td>' . $pasien->rumahsakit->nama . '</td>
+            <td>
+                <a href="' . route('pasiens.edit', $pasien->id) . '" class="btn-edit">Edit</a>
+                <a href="" class="deleteData btn-delete" data-id="' . $pasien->id . '">Delete</a>
+            </td>
+        </tr>';
+        }
+        return response()->json(['html' => $html]);
     }
 }
